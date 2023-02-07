@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        TJCTF2022 - Fruit Store - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><style>
+/* Variables */
+:root {
+  /*dracula official spec colors */
+  --dracula-background: rgb(40, 42, 54);
+ 
+
+  /* dracula custom colors for typora */
+  --dracula-foreground-fade: rgba(248, 248, 242, 0.5);
+  --dracula-background-dark: rgb(32, 34, 39);
+
+  /* background */
+  --background-primary: #282a36;
+  --background-primary-alt: #3e3f4a;
+  /*--background-secondary: #282a36;*/
+  --background-secondary-alt: #1a1e24;
+
+  /* text */
+  --text-normal: #ffff;
+  --text-title-h1: #ffff;
+  --text-title-h2: #ffff;
+  --text-title-h3: #ffff;
+  --text-title-h4: #ffff;
+  --text-title-h5: #ffff;
+  --text-title-h6: #ffff;
+  --text-link: #5c7af2;
+  --markup-code: #fff;
+  --text-tag: #50fa7b;
+  --text-a: #ffff;
+  --text-a-hover: #ffff;
+  --text-mark: #c4c4bc;
+
+  /* other */
+  --interactive-accent: #c4c4bc;
+  --interactive-accent-rgb: #c4c4bc;
+  --blockquote-border: #b294bb;
+
+  /* table color */
+  --table-border-color: var(--dracula-foreground);
+  --table-thead-color: var(--dracula-current-line);
+  --table-bg-color: var(--dracula-background);
+  --table-bg-darker-color: var(--dracula-background-dark);
+}
+
+/* Navigation */
+.navbar {
+  background: var(--dracula-background);
+}
+
+.navbar-default {
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+  border-color: var(--dracula-background);
+}
+
+.navbar-default .navbar-brand {
+  color: var(--text-color1);  
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #9daef5;  
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: var(--text-color1);
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #9daef5;
+}
+
+.ui-toc-dropdown .nav > li > a {
+  color:white;  
+}
+
+.ui-toc-dropdown .nav > li > a:hover {
+  color: #9daef5; 
+}
+
+.ui-toc-dropdown .nav > .active:focus > a,
+.ui-toc-dropdown .nav > .active:hover > a,
+.ui-toc-dropdown .nav > .active > a {
+  color: #9daef5;  
+}
+
+.ui-infobar,
+.community-button {
+  color: white;  
+}
+
+.community-button:hover {
+  background: white;
+  color: var(--dracula-background);
+}
+
+.ui-comment-app .open-comments {
+  background: var(--background-primary);
+}
+
+.dropdown-menu {
+  background: var(--background-primary-alt);
+}
+
+.ui-notification .notification-menu-item:hover {
+  background: blue;
+}
+
+/* Body */
+html,
+body,
+.ui-content {
+  font-family: 'Open Sans', 'Clear Sans', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  font-size: 15px;
+  text-align: justify;
+  color: var(--text-normal);
+  background: var(--background-primary);
+  line-height: 1.6;  
+
+}
+
+
+/* Buttons */
+.btn-default {
+  border-color: var(--dracula-purple);
+  background: var(--dracula-background);
+  color: rgb(188, 194, 205);
+}
+
+.btn-default.active {
+  border-color: var(--dracula-purple);
+  background: var(--dracula-purple);
+  color: var(--dracula-background);
+}
+
+.btn-default.active:hover {
+  border-color: white;
+  background: white;
+}
+
+.btn-default:hover {
+  border-color: white;
+  background: white;
+  color: rgb(255, 255, 255);
+}
+
+.btn-primary {
+  background: var(--dracula-cyan);
+  color: rgb(10, 30, 15);
+}
+
+.btn-primary:hover {
+  background: rgb(110, 177, 194);
+  color: rgb(10, 30, 15);
+}
+    
+
+/* Headings */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  padding-bottom: 0em;
+  border-bottom: none;
+}
+
+.markdown-body h1 {
+  font-weight: 500;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-title-h1);
+}
+
+.markdown-body h2 {
+  font-weight: 500;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--text-title-h2);
+}
+
+.markdown-body h3 {
+  font-weight: 500;
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--text-title-h3);
+}
+
+.markdown-body h4 {
+  font-weight: 500;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-title-h4);
+}
+
+.markdown-body h5 {
+  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-title-h5);
+}
+
+.markdown-body h6 {
+  font-weight: 500;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-title-h6);
+}
+
+/* list */
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 30px;
+}
+
+/* Hyperlinks */
+.markdown-body a {
+  color: var(--text-link);
+}
+
+.markdown-body a:hover {
+  color: var(--text-link);
+}
+
+/* Blockquote Area */
+.markdown-body blockquote {
+  color: var(--interactive-accent) !important;
+  font-style: italic;
+  border-color: var(--blockquote-border) !important;
+}
+
+.markdown-body blockquote p {
+  display: inline;
+}
+
+/* Tables */
+.markdown-body table {
+  display: table;
+  text-align: left;
+}
+
+.markdown-body table thead tr {
+  background-color: var(--table-thead-color);
+}
+
+.markdown-bodytable tr th {
+  font-weight: bold;
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.markdown-body table tbody tr {
+  border-top: 1px solid var(--table-border-color);
+  margin: 0;
+  padding: 0;
+}
+
+.markdown-body table tbody tr:nth-child(2n) {
+  background-color: var(--table-bg-darker-color);
+}
+
+.markdown-body table tbody tr:nth-child(2n + 1) {
+  background-color: var(--table-bg-color);
+}
+
+.markdown-body table tr td {
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.markdown-body table tr th:first-child,
+.markdown-body table tr td:first-child {
+  border-left-width: 0px;
+}
+
+.markdown-body table tr th:last-child,
+.markdown-body table tr td:last-child {
+  border-right-width: 0px;
+}
+
+/* Codeblock */
+.markdown-body code {
+  border: 1px solid #525660;
+  border-radius: 4px;
+  color: var(--markup-code) !important;
+  background-color: var(--background-primary-alt);
+  bottom: -0.1px;
+}
+
+/* Keyboard Buttons */
+.markdown-body kbd {
+  background: var(--bg-color5);
+  color: var(--text-color1);
+  font-family: 'Lucida Console';
+  border-color: var(--menu-divider-color);
+}
+
+.markdown-body pre code {
+  padding: 5px;
+  line-height: normal;
+  display: block;
+  background-color: var(--background-primary-alt);
+}
+
+.markdown-body pre {
+  background-color: var(--background-primary-alt);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Text */
+.markdown-body strong {
+  color: var(--markup-code);
+  font-weight: 700;
+}
+
+.markdown-body em {
+  color: var(--interactive-accent);
+}
+
+/* Images */
+.markdown-body img {
+  background-color: transparent;
+  border-radius: 10px;   
+}
+
+/* Mark */
+.markdown-body mark {
+  border-radius: 4px;
+  color: var(--background-primary);
+  background-color: var(--text-mark);
+  margin: 0px 2px;
+  padding: 0px 4px 1px 4px;
+}
+
+/* horizontal divider */
+.markdown-body hr {
+  height: 1px;
+  background-color: var(--text-normal);
+  border: 0px;
+}
+
+/* Details */
+.markdown-body details {
+  padding: 5px 10px;
+  border: 0px solid #37352f;
+  border-radius: 1px;
+  background-color: rgb(56, 58, 89);
+}
+
+.markdown-body summary {
+  color: rgb(248, 248, 242);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 4px;
+}
+
+
+/* Scrollbars */
+
+:root {
+  --background: #282a36;
+  --comment: #6272a4;
+  --foreground: #f8f8f2;
+  --selection: #44475a;
+
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+
+  /* Transparency */
+
+  /** 30% of transparency **/
+  --background-30: #282a3633;
+  --comment-30: #6272a433;
+  --foreground-30: #f8f8f233;
+  --selection-30: #44475a33;
+
+  --cyan-30: #8be9fd33;
+  --green-30: #50fa7b33;
+  --orange-30: #ffb86c33;
+  --pink-30: #ff79c633;
+  --purple-30: #bd93f933;
+  --red-30: #ff555533;
+  --yellow-30: #f1fa8c33;
+
+  /** 40% of transparency **/
+  --background-40: #282a3666;
+  --comment-40: #6272a466;
+  --foreground-40: #f8f8f266;
+  --selection-40: #44475a66;
+
+  --cyan-40: #8be9fd66;
+  --green-40: #50fa7b66;
+  --orange-40: #ffb86c66;
+  --pink-40: #ff79c666;
+  --purple-40: #bd93f966;
+  --red-40: #ff555566;
+  --yellow-40: #f1fa8c66;
+}
+
+pre::-webkit-scrollbar {
+  width: 14px;
+}
+
+pre::-webkit-scrollbar-track {
+  background-color: #3e3f4a;
+  border-radius: 0px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background-color: #32323b ;
+  border-radius: 0px;
+}
+
+/* Selection */
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+  text-shadow: none;
+  background-color: var(--selection);
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  text-shadow: none;
+  background-color: var(--selection);
+}
+
+/* Line numbers */
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em; /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+/* Toolbar for copying */
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar > .toolbar {
+  position: absolute;
+  top: 0.3em;
+  right: 0.2em;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+div.code-toolbar > .toolbar a {
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button,
+div.code-toolbar > .toolbar span {
+  color: var(--foreground);
+  font-size: 0.8em;
+  padding: 0.5em;
+  background: var(--comment);
+  border-radius: 0.5em;
+}
+
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar a:focus,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar button:focus,
+div.code-toolbar > .toolbar span:hover,
+div.code-toolbar > .toolbar span:focus {
+  color: inherit;
+  text-decoration: none;
+  background-color: var(--green);
+}
+
+/* Remove text shadow for printing */
+
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    text-shadow: none;
+  }
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--foreground);
+  background: var(--background);
+  text-shadow: none;
+  font-family: PT Mono, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+    
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+
+pre[class*='language-'] {
+  background: var(--background);
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  height: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--background);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 4px 7px;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+/* Code box limit */
+
+.limit-300 {
+  height: 300px !important;
+}
+
+.limit-300 {
+  height: 400px !important;
+}
+
+.limit-500 {
+  height: 500px !important;
+}
+
+.limit-600 {
+  height: 600px !important;
+}
+
+.limit-700 {
+  height: 700px !important;
+}
+
+.limit-800 {
+  height: 800px !important;
+}
+
+.language-css {
+  color: var(--purple);
+}
+
+.token {
+  color: var(--red);
+}
+
+.language-css .token {
+  color: var(--red);
+}
+
+.token.script {
+  color: var(--foreground);
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.atrule,
+.token.attr-name,
+.token.attr-value {
+  color: var(--green);
+}
+
+.language-css .token.atrule {
+  color: var(--purple);
+}
+
+.language-html .token.attr-value,
+.language-markup .token.attr-value {
+  color: var(--yellow);
+}
+
+.token.boolean {
+  color: var(--purple);
+}
+
+.token.builtin,
+.token.class-name {
+  color: var(--red);
+}
+
+.token.comment {
+  color: var(--comment);
+}
+
+.token.constant {
+  color: var(--purple);
+}
+
+.language-javascript .token.constant {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.token.entity {
+  color: var(--red);
+}
+
+.language-css .token.entity {
+  color: var(--green);
+}
+
+.language-html .token.entity.named-entity {
+  color: var(--purple);
+}
+
+.language-html .token.entity:not(.named-entity) {
+  color: var(--red);
+}
+
+.language-markup .token.entity.named-entity {
+  color: var(--purple);
+}
+
+.language-markup .token.entity:not(.named-entity) {
+  color: var(--red);
+}
+
+.token.function {
+  color: var(--green);
+}
+
+.language-css .token.function {
+  color: var(--red);
+}
+
+.token.important,
+.token.keyword {
+  color: var(--red);
+}
+
+.token.prolog {
+  color: var(--foreground);
+}
+
+.token.property {
+  color: var(--orange);
+}
+
+.language-css .token.property {
+  color: var(--red);
+}
+
+.token.punctuation {
+  color: var(--white);
+}
+
+.language-css .token.punctuation {
+  color: var(--orange);
+}
+
+.language-html .token.punctuation,
+.language-markup .token.punctuation {
+  color: var(--foreground);
+}
+
+.token.selector {
+  color: var(--red);
+}
+
+.language-css .token.selector {
+  color: var(--green);
+}
+
+.token.regex {
+  color: var(--red);
+}
+
+.language-css .token.rule:not(.atrule) {
+  color: var(--foreground);
+}
+
+.token.string {
+  color: var(--yellow);
+}
+
+.token.tag {
+  color: var(--red);
+}
+
+.token.url {
+  color: var(--red);
+}
+
+.language-css .token.url {
+  color: var(--orange);
+}
+
+.token.variable {
+  color: var(--comment);
+}
+
+.token.number {
+  color: rgba(189, 147, 249, 1);
+}
+
+.token.operator {
+    color: var(--red);
+    background: none;
+}
+
+
+.token.char {
+  color: rgba(255, 135, 157, 1);
+}
+
+.token.symbol {
+  color: rgba(255, 184, 108, 1);
+}
+
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.namespace {
+  color: #e2777a;
+}
+
+/* Line Highlighter */
+.highlight-line {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+
+  border-radius: 4px;
+  padding: 2px 10px;
+}
+
+.highlight-line:empty:before {
+  content: ' ';
+}
+
+.highlight-line:not(:last-child) {
+  min-width: 100%;
+}
+
+.highlight-line .highlight-line:not(:last-child) {
+  min-width: 0;
+}
+
+.highlight-line-isdir {
+  color: var(--foreground);
+  background-color: var(--selection-30);
+}
+
+.highlight-line-active {
+  background-color: var(--comment-30);
+}
+
+.highlight-line-add {
+  background-color: var(--green-30);
+}
+
+.highlight-line-remove {
+  background-color: var(--red-30);
+}
+</style><h1 id="TJCTF2022---Fruit-Store" data-id="TJCTF2022---Fruit-Store"><a class="anchor hidden-xs" href="#TJCTF2022---Fruit-Store" title="TJCTF2022---Fruit-Store"><span class="octicon octicon-link"></span></a><span>TJCTF2022 - Fruit Store</span></h1><h2 id="Esecuzione-della-sfida-in-locale" data-id="Esecuzione-della-sfida-in-locale"><a class="anchor hidden-xs" href="#Esecuzione-della-sfida-in-locale" title="Esecuzione-della-sfida-in-locale"><span class="octicon octicon-link"></span></a><span>Esecuzione della sfida in locale</span></h2><p><span>Per poter eseguire la sfida in locale effetuare il clone della repository :</span></p><pre><code class="bash hljs"> git <span class="hljs-built_in">clone</span> https://github.com/pierde98/CTF.git 
+</code></pre><p><span>Entrare nella directory della sfida e istanziare il container Docker :</span></p><pre><code class="bash hljs"><span class="hljs-built_in">cd</span> TJCTF-FruitStore
+docker-compose up -d  
+</code></pre><p><span>L’applicazione web della sfida è in esecuzione su: </span><a href="http://localhost:3000/" target="_blank" rel="noopener"><span>http://localhost:3000/</span></a></p><hr><h2 id="Analisi-preliminare" data-id="Analisi-preliminare"><a class="anchor hidden-xs" href="#Analisi-preliminare" title="Analisi-preliminare"><span class="octicon octicon-link"></span></a><span>Analisi preliminare</span></h2><p><span>L’applicazione consiste in una pagina in cui è possibile acquistare i vari prodotti con un credito iniziale che l’utente ha a disposizione. Per ogni prodotto viene indicato il prezzo e la quantità disponibile.</span></p><p><img src="https://i.imgur.com/zdhDkRD.png" alt="" loading="lazy"></p><p><span>Per capire la vulnerabilità trattata in questa sfida, occorre fare una precisazione. Nel </span><a href="https://ctf.tjctf.org/" title="Vai al sito ufficiale" target="_blank" rel="noopener"><span>sito web</span></a><span> ufficiale, quando l’evento era in esecuzione, per poter avviare la sfida in questione, ogni squadra aveva a dispozione un’istanza personale. Quindi, a differenza di altri task, non veniva fornito direttamente l’URL dell’istanza funzionante ma ogni squadra doveva creare la propria istanza che restava attiva per un determinato minutaggio.</span></p><p><img src="https://i.imgur.com/hajTZkh.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/OzrFM6A.png" alt="" loading="lazy"></p><p><span>Questo è un suggerimento importante; creare un’istanza separata per ogni squadra non è banale, si usano più risorse e richiede tempo per l’implementazione. Di solito quando si procede in questo modo, significa che mentre si sfrutta la vulnerabilità possiamo apportare modifiche al server e questo influenzerà altri giocatori. Per cui un sistema di questo tipo ci aiuta restringere la lista delle potenziali vulnerabilità che potremmo affrontare.</span></p><p><span>Andiamo ad analizzare quindi il codice sorgente che abbiamo a disposizione. La presenza di </span><code>package.json</code><span> e di </span><code>index.js</code><span>, ci suggerisce che questa applicazione è scritta in </span><code>Node.js</code><span>.</span></p><hr><details><summary>Breve approfondimento</summary><p>
+</p><p><span>I file </span><code>JSON</code><span> (JavaScript Object Notation) sono utilizzati per rappresentare i dati in formato testuale e sono largamente utilizzati in molte applicazioni web, tra cui quelle scritte in </span><code>Node.js</code><span>. In particolare, il file </span><code>package.json</code><span> è un file obbligatorio in ogni progetto Node.js e contiene informazioni sul progetto come il nome, la versione, le dipendenze e i comandi script.</span><br>
+<span>Inoltre, molte librerie e framework </span><code>Node.js</code><span> utilizzano file </span><code>JSON</code><span> per la configurazione dell’applicazione come ad esempio, per la configurazione del server, inizializzazione della connessione al database, la definizione della rotta dell’applicazione, e così via.</span></p>
+<p></p></details><hr><p><span>Tenendo conto delle considerazioni precedenti e del fatto che abbiamo un’applicazione web scritta in </span><code>Node.js</code><span> possiamo pensare che siamo di fronte ad una vulnerabiltà “Prototype Pollution”.</span></p><p><span>La vulnerabilità “Prototype Pollution” è un tipo di attacco in cui un attaccante è in grado di modificare i prototipi degli oggetti predefiniti in JavaScript, causando comportamenti inaspettati nell’applicazione. Ciò può consentire all’attaccante di eseguire codice arbitrario e accedere a informazioni riservate.</span></p><hr><details open=""><summary>Per approfondire Prototype Pollution</summary><p>
+</p><p><span>In JavaScript, ogni oggetto ha un prototipo che è un altro oggetto da cui esso eredita proprietà e metodi. Quando si accede a una proprietà o si chiama un metodo su un oggetto, JavaScript cerca prima nell’oggetto stesso e poi nel suo prototipo, seguendo la catena di prototipi fino a trovare una corrispondenza.</span></p>
+<p><span>Un esempio di modifica di un prototipo è quando si aggiunge una proprietà o un metodo ad un prototipo predefinito. Un esempio potrebbe essere:</span></p>
+<pre><code class="javascript hljs"><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myFunction</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello from myFunction!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><span>In questo caso, si sta aggiungendo un metodo chiamato “myFunction” al prototipo dell’oggetto Array. Dopo questa modifica, tutti gli oggetti Array avranno una nuova proprietà chiamata “myFunction”, e sarà possibile chiamare questo metodo su qualsiasi oggetto Array, esempio:</span></p>
+<pre><code class="javascript hljs"><span class="token keyword">let</span> myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+myArray<span class="token punctuation">.</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: "Hello from myFunction!"</span>
+</code></pre>
+<p><span>La vulnerabilità Prototype Pollution consiste nell’aggiungere proprietà o metodi arbitrari a prototipi predefiniti o a oggetti in modo che causino comportamenti inaspettati e potenzialmente pericolosi nell’applicazione.</span></p>
+<p><span>Un esempio semplice di attacco Prototype Pollution potrebbe essere il seguente:</span><br>
+<span>immaginiamo di avere un’applicazione web che accetta input dall’utente e lo utilizza per recuperare un record da un database. L’applicazione utilizza una funzione come questa per recuperare i dati:</span></p>
+<pre><code class="javascript hljs"><span class="token keyword">function</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> data<span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><span>In questo caso, l’applicazione si aspetta che l’input “id” sia una stringa o un numero che corrisponde a un record nel database. Tuttavia, se un attaccante è in grado di fornire un input che modifica il prototipo dell’oggetto “Object” (ad esempio, iniettando un codice JavaScript maligno nel campo di input dell’applicazione), potrebbe cambiare il comportamento della funzione “getData” in modo da restituire dati arbitrari o causare un errore.</span></p>
+<p><span>Un esempio di codice maligno per questo attacco potrebbe essere:</span></p>
+<pre><code class="javascript hljs"><span class="token punctuation">{</span><span class="token literal-property property">__proto__</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token function-variable function">getData</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">"Attacker's data"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<p><span>L’attaccante potrebbe inserire questo codice nell’input dell’applicazione e quando la funzione getData() verrebbe chiamata, restituirebbe sempre “Attacker’s data” indipendentemente dall’id passato.</span></p>
+<p><span>(Leggi di più: </span><a href="https://portswigger.net/web-security/prototype-pollution" target="_blank" rel="noopener"><span>https://portswigger.net/web-security/prototype-pollution</span></a><span>)</span></p>
+<p></p></details><hr><p><span>Tornando all’applicazione che stiamo analizzando, si può notare che, tra i vari prodotti, ce n’è uno che non possiamo acquistare poichè il prezzo è di una cifra spropositata. Può essere un indizio per la nostra ricerca.</span></p><p><img src="https://i.imgur.com/6IXLf1K.png" alt="" loading="lazy"></p><p><span>Analizziamo dunque il codice </span><code>index.js</code><span>.</span></p><pre><code class="javascript hljs"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> session <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express-session'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> fruits <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./inventory.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> fruit <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'some fruit'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">0.25</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'a fruit'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">quantity</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+fruits<span class="token punctuation">[</span><span class="token string">'kiwi'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'kiwi'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">2.5e+25</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">description</span><span class="token operator">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'flag.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">quantity</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">extended</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'view engine'</span><span class="token punctuation">,</span> <span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">secret</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'crypto'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">randomBytes</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token string">'hex'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">resave</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">saveUninitialized</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>ip <span class="token operator">==</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>admin <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> fruits<span class="token punctuation">,</span> <span class="token literal-property property">money</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/v1/sell'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">'kiwi'</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>admin<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>k<span class="token punctuation">,</span> v<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">===</span> <span class="token string">'quantity'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+=</span> v<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Sell successful'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/v1/buy'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> fruit<span class="token punctuation">,</span> quantity <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> fruit <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> quantity <span class="token operator">!==</span> <span class="token string">'number'</span> <span class="token operator">||</span> quantity <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token operator">!</span>fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Invalid request'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">.</span>quantity <span class="token operator">&gt;=</span> quantity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token operator">&gt;=</span> fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">.</span>price <span class="token operator">*</span> quantity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">.</span>quantity <span class="token operator">-=</span> quantity<span class="token punctuation">;</span>
+            req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token operator">-=</span> fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">.</span>price <span class="token operator">*</span> quantity<span class="token punctuation">;</span>
+            res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>fruit<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">402</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Not enough money'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">451</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Not enough fruit'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/v1/money'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>admin<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>money <span class="token operator">+=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>money<span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Money added'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Not admin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Listening on port 3000'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><span>Questo codice crea un’applicazione web utilizzando il framework </span><a href="https://expressjs.com/it/4x/api.html" title="Vai alla documentazione" target="_blank" rel="noopener"><span>Express</span></a><span> in Node.js. Soffermiamoci solo sui punti salienti dello script.</span></p><p><span>In primo luogo, vengono importati i moduli necessari per l’applicazione: “express” per la creazione del server web, “express-session” per la gestione delle sessioni dell’utente e “fs” per l’interazione con i file del sistema.</span><br>
+<span>Viene poi configurata l’applicazione per utilizzare il formato JSON per le richieste e il motore di visualizzazione EJS per la generazione delle risposte HTML.</span><br>
+<span>Viene quindi configurata la gestione delle sessioni utilizzando “express-session” e vengono impostate alcune opzioni per la creazione e la gestione delle sessioni.</span></p><p><span>Vengono definite le seguenti rotte:</span></p><ul>
+<li>
+<p><strong><span>“/”</span></strong><span> : viene gestita da una richiesta HTTP di tipo GET e mostra la pagina principale;</span></p>
+</li>
+<li>
+<p><strong><span>“/api/v1/sell”</span></strong><span> : viene gestita da una richiesta HTTP di tipo POST e consente di vendere frutti all’inventario. La richiesta deve contenere un corpo json con le proprietà del frutto da vendere, il sistema controlla che l’utente abbia i privilegi per vendere determinati frutti, e poi aggiorna l’inventario con le proprietà del frutto venduto.</span></p>
+</li>
+<li>
+<p><strong><span>“/api/v1/buy”</span></strong><span> : gestita da una richiesta HTTP di tipo POST. Consente agli utenti di effettuare acquisti di frutti dall’inventario. La richiesta deve contenere un corpo json con le proprietà “fruit” e “quantity” specificando il frutto e la quantità richiesta. Il sistema controlla che ci siano abbastanza frutti disponibili e che l’utente abbia abbastanza denaro per effettuare l’acquisto e se tutto è a posto, effettua la transazione.</span></p>
+</li>
+<li>
+<p><strong><span>“/api/v1/money”</span></strong><span> : è utilizzata per aggiungere denaro alla sessione corrente dell’utente. È gestita da una richiesta HTTP di tipo POST. Viene controllato se l’utente corrente è un admin utilizzando il valore di “req.session.admin”. Se l’utente è un admin, il denaro viene aggiunto alla sessione dell’utente utilizzando “req.session.money += req.body.money;”, la richiesta quindi riceve risposta con il messaggio “Money added”. Se l’utente non è un admin, si riceve una risposta con un codice di stato 403 (Forbidden) e il messaggio “Not admin”. Si noti che la richiesta deve contenere un corpo JSON con una chiave “money” e un valore numerico, altrimenti la risposta sarà un errore.</span></p>
+</li>
+</ul><p><span>La porzione fondamentale del codice utile ad individuare il flag per la risoluzione della sfida è la seguente:</span></p><pre><code class="javascript hljs">fruits<span class="token punctuation">[</span><span class="token string">'kiwi'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'kiwi'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">2.5e+25</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">description</span><span class="token operator">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'flag.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">quantity</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><p><span>Si può notare che il frutto “kiwi”, come avevamo visto in precedenza, ha un prezzo spropositato. Qui si capisce il motivo, se riusciamo ad acquistare questo frutto, saremo in grado di leggere il campo “description” che contiene il flag.</span></p><hr><h2 id="Risoluzione" data-id="Risoluzione"><a class="anchor hidden-xs" href="#Risoluzione" title="Risoluzione"><span class="octicon octicon-link"></span></a><span>Risoluzione</span></h2><p><span>Ora che abbiamo compreso la struttura del codice ed individuato il flag, possiamo procedere seguendo questi passaggi:</span></p><ul>
+<li><span>Divientiamo admin in modo da poter aggiungere denaro alla nostra sessione.</span></li>
+<li><span>Aggiungiamo una quantità di denaro sufficiente per poter acquistare il frutto che contiene il flag.</span></li>
+<li><span>Acquistiamo il frutto d’interesse, ottenendo il flag.</span></li>
+</ul><p><span>Per poter sfruttare la vulnerabilità trattata, una possibile strada è cercare un ciclo che riscriverà tutti i campi del nostro oggetto in un altro oggetto che ha il prototipo. Nell’esempio che segue, ad un certo punto, una delle iterazioni del ciclo eseguirà l’assegnazione che inquinerà il prototipo.</span></p><p><img src="https://i.imgur.com/Dd1qWfH.gif" alt="" loading="lazy"></p><p><span>Cerchiamo quindi in </span><code>index.js</code><span> qualcosa può permetterci di effettuare un’operazione di questo tipo.</span><br>
+<span>Notiamo che il metodo “sell” potrebbe fare al caso nostro.</span></p><pre><code class="javascript hljs">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/v1/sell'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">'kiwi'</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>admin<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>k<span class="token punctuation">,</span> v<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">===</span> <span class="token string">'quantity'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+=</span> v<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                fruits<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Sell successful'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><span>Abbiamo un ciclo “for” che utilizza “Object.entries(value)” che esamina tutti i campi di ogni oggetto che abbiamo fornito nel corpo della richiesta.</span></p><p><span>Viene controllato solo se la chiave è “quantity”. Se non lo è, la proprietà del frutto nell’inventario viene sovrascritta con il valore specificato nella richiesta.</span></p><p><span>Gli oggetti “fruit” sono creati usando la sintassi delle parentesi graffe,  ogni oggetto creato con la sintassi delle parentesi graffe ha lo stesso prototipo per impostazione predefinita.</span></p><pre><code class="javascript hljs"><span class="token keyword">const</span> fruit <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'some fruit'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">0.25</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'a fruit'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">quantity</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><p><span>Inquinandolo, si otterrà il nostro campo admin impostato a “true” in ogni oggetto creato in questo modo, auspicabilmente anche nell’oggetto “session”.</span></p><p><span>Prepariamo il nostro exploit e vediamo cosa succede.</span></p><p><span>Faremo uso di </span><a href="https://insomnia.rest/" title="Vai al sito ufficiale" target="_blank" rel="noopener"><span>Insomnia</span></a><span>, un framework desktop multipiattaforma gratuito per testare le applicazioni REST. È possibile utilizzare Insomnia per testare API GraphQL e API RESTful basate su HTTP.</span></p><hr><details><summary>Breve cenno API REST</summary><p>
+</p><p><span>Un API REST (Application Programming Interface Representational State Transfer) è un tipo di interfaccia software che utilizza il protocollo HTTP per la comunicazione tra sistemi. Utilizza metodi standard come GET, POST, PUT e DELETE per interagire con i dati presenti su un server. Le risposte del server sono in formato JSON o XML. L’architettura REST è utilizzata per creare servizi web scalabili e facilmente utilizzabili.</span></p>
+<p><span>(Leggi di più: </span><a href="https://www.ibm.com/it-it/cloud/learn/rest-apis#toc-cos-unapi--B-Z5O4lX" target="_blank" rel="noopener"><span>https://www.ibm.com/it-it/cloud/learn/rest-apis#toc-cos-unapi--B-Z5O4lX</span></a><span>)</span></p>
+<p></p></details><hr><p><span>Per prima cosa, poiché abbiamo intenzione di fare più richieste allo stesso server ci conviene inserire l’URL di base come variabile d’ambiente.</span></p><p><img src="https://i.imgur.com/d2Kf6lA.gif" alt="" loading="lazy"></p><p><span>A questo punto facciamo la nostra prima richiesta HTTP, ovvero quella che ci permetterà di diventare admin e che inquinerà il prototipo di oggetto base.</span><br>
+<span>Per effeutare richieste HTTP basta fare click sul simbolo </span><code>+</code><span> e selezionare </span><code>HTTP Request</code><span>.</span></p><p><span>Quindi selezioniamo il tipo di richiesta, </span><code>POST</code><span> nel nostro caso, e con </span><code>CTRL + SPACE</code><span> possiamo richiamare la variabile d’ambiente che abbiamo settato in precedenza. Per cui dobbiamo solo aggiungere il resto dell’URL che fa riferimento al metodo “sell”, ovvero “/api/v1/sell” . Settiamo la codifica del corpo in </span><code>JSON</code><span> e scriviamo la richiesta come segue.</span></p><pre><code class="json hljs"><span class="token punctuation">{</span>
+    <span class="token property">"__proto__"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"admin"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p><span>L’immagine seguente mostra il quadro completo.</span></p><p><img src="https://i.imgur.com/asIaHOu.png" alt="" loading="lazy"></p><p><span>In questo modo, ogni nuovo oggetto deve avere una proprietà admin impostata su true. Così facendo il ciclo “for” che abbiamo visto prima potrebbe aiutarci ad inquinare l’oggetto base con quel campo.</span></p><p><span>Procediamo con la seconda richiesta che ci servirà ad aggiungere la quantità necesseria di denaro per poter acquistare il frutto che contiene il flag. Ovviamente per questa richiesta dobbiamo cambiare l’URL inserendo, in questo caso, “/api/v1/money”.</span></p><pre><code class="json hljs"><span class="token punctuation">{</span>
+    <span class="token property">"money"</span><span class="token operator">:</span> <span class="token number">2.5e+25</span>
+<span class="token punctuation">}</span>
+</code></pre><p><span>Anche questa richiesta è molto semplice, copiamo solamente il “prezzo” dal codice sorgente.</span></p><p><img src="https://i.imgur.com/6CS6lel.png" alt="" loading="lazy"></p><p><span>Infine effettuiamo la richiesta che comprerà il frutto che contiene il flag.</span><br>
+<span>Cambiamo nuovamente l’URL, questa volta inserendo “api/v1/buy” e scriviamo la richiesta come segue:</span></p><pre><code class="json hljs"><span class="token punctuation">{</span>
+    <span class="token property">"fruit"</span><span class="token operator">:</span> <span class="token string">"kiwi"</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">1</span>
+
+<span class="token punctuation">}</span>
+</code></pre><p><img src="https://i.imgur.com/E8wMCRB.png" alt="" loading="lazy"></p><p><span>A questo punto non ci resta che testare. Inviando le richieste questo è quello che si ottiene.</span></p><ol>
+<li>
+<p><img src="https://i.imgur.com/D7YnTC4.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><img src="https://i.imgur.com/7nHIpzm.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><img src="https://i.imgur.com/jjSOkom.png" alt="" loading="lazy"></p>
+</li>
+</ol><p><span>Siamo riusciti ad acquistare il frutto che contiene il flag nella campo “description”. Sfida completata!</span></p><hr><h2 id="Come-prevenire-la-vulnerabiltà-Prototype-Pollution" data-id="Come-prevenire-la-vulnerabiltà-Prototype-Pollution"><a class="anchor hidden-xs" href="#Come-prevenire-la-vulnerabiltà-Prototype-Pollution" title="Come-prevenire-la-vulnerabiltà-Prototype-Pollution"><span class="octicon octicon-link"></span></a><span>Come prevenire la vulnerabiltà Prototype Pollution</span></h2><ul>
+<li>
+<p><strong><span>Utilizzare librerie open source sicure</span></strong></p>
+<p><span>Le librerie open source possono utilizzare diverse pratiche che le espongono all’inquinamento dei prototipi. Ogni volta che una libreria imposta ricorsivamente una proprietà annidata, deve sanificare gli input non attendibili. È importante valutare attentamente le librerie open source e assicurarsi che il proprio progetto non utilizzi una libreria esposta a queste debolezze.</span></p>
+</li>
+<li>
+<p><strong><span>Creare oggetti senza prototipi Java</span></strong></p>
+<p><span>Un’altra tecnica che consente di evitare l’inquinamento dei prototipi è Object.create(). Si può usare questo metodo al posto del costruttore di oggetti Object() o del letterale object {} quando si crea un nuovo oggetto. Questo approccio consente di impostare il prototipo dell’oggetto creato direttamente utilizzando il primo parametro passato all’elemento Object.create(). Se si passa un valore null, l’oggetto creato non avrà un prototipo e non sarà inquinabile.</span></p>
+</li>
+<li>
+<p><strong><span>Impedire tutte le modifiche al prototipo</span></strong></p>
+<p><span>Un altro metodo supportato da JavaScript è Object.freeze(). Consente di bloccare tutte le modifiche agli attributi di un oggetto. Dato che un prototipo è semplicemente un oggetto, è possibile congelarlo come si farebbe con un oggetto normale. Si può invocare l’elemento Object.freeze(Object.prototype)per congelare il prototipo predefinito e impedire che venga inquinato.</span></p>
+</li>
+</ul><hr><details open=""><summary>Link utili </summary><p>
+</p><ul>
+<li>
+<p><a href="https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution" target="_blank" rel="noopener"><span>https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution</span></a></p>
+</li>
+<li>
+<p><a href="https://portswigger.net/daily-swig/prototype-pollution-the-dangerous-and-underrated-vulnerability-impacting-javascript-applications" target="_blank" rel="noopener"><span>https://portswigger.net/daily-swig/prototype-pollution-the-dangerous-and-underrated-vulnerability-impacting-javascript-applications</span></a></p>
+</li>
+<li>
+<p><a href="https://learn.snyk.io/lessons/prototype-pollution/javascript/" target="_blank" rel="noopener"><span>https://learn.snyk.io/lessons/prototype-pollution/javascript/</span></a></p>
+</li>
+</ul>
+<p></p></details><hr></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#TJCTF2022---Fruit-Store" title="TJCTF2022 - Fruit Store">TJCTF2022 - Fruit Store</a><ul class="nav">
+<li><a href="#Esecuzione-della-sfida-in-locale" title="Esecuzione della sfida in locale">Esecuzione della sfida in locale</a></li>
+<li><a href="#Analisi-preliminare" title="Analisi preliminare">Analisi preliminare</a></li>
+<li><a href="#Risoluzione" title="Risoluzione">Risoluzione</a></li>
+<li><a href="#Come-prevenire-la-vulnerabiltà-Prototype-Pollution" title="Come prevenire la vulnerabiltà Prototype Pollution">Come prevenire la vulnerabiltà Prototype Pollution</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#TJCTF2022---Fruit-Store" title="TJCTF2022 - Fruit Store">TJCTF2022 - Fruit Store</a><ul class="nav">
+<li><a href="#Esecuzione-della-sfida-in-locale" title="Esecuzione della sfida in locale">Esecuzione della sfida in locale</a></li>
+<li><a href="#Analisi-preliminare" title="Analisi preliminare">Analisi preliminare</a></li>
+<li><a href="#Risoluzione" title="Risoluzione">Risoluzione</a></li>
+<li><a href="#Come-prevenire-la-vulnerabiltà-Prototype-Pollution" title="Come prevenire la vulnerabiltà Prototype Pollution">Come prevenire la vulnerabiltà Prototype Pollution</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
